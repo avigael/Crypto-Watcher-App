@@ -120,28 +120,33 @@ extension HomeView {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
-                    .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .onTapGesture {
                         lazyNavigate(coin: coin)
                     }
             }
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
+        .refreshable {
+            vm.reloadData()
+        }
+        
     }
     
     private var portfolioCoinsList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
-                    .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .onTapGesture {
                         lazyNavigate(coin: coin)
                     }
             }
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
+        .refreshable {
+            vm.reloadData()
+        }
     }
     
     private var emptyPortfolioText: some View {
