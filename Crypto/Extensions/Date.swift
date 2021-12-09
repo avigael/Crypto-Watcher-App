@@ -9,6 +9,8 @@ import Foundation
 
 extension Date {
     
+    /// Creates a date from a CoinGecko API String date
+    /// - Parameter coinGeckoDate: String date used by CoinGecko API
     init(coinGeckoDate: String) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -22,6 +24,10 @@ extension Date {
         return formatter
     }
     
+    /// Converts a Date to a short date style as a String
+    /// ```
+    /// Converts 2021-12-09 12:34:56 +0000 to "12/09/2021"
+    /// ```
     func asShortDateString() -> String {
         return shortFormatter.string(from: self)
     }

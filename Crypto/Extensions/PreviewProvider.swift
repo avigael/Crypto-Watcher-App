@@ -13,12 +13,17 @@ class DeveloperPreview {
     static let instance = DeveloperPreview()
     private init() { }
     
+    /// Sample HomeViewModel
     let vm = HomeViewModel()
     
+    /// Sample Market Cap Statistics Model (Positive Percentage)
     let statisticA = Statistics(title: "Market Cap", value: "$12.5Bn", percentageChange: 25.34)
+    /// Sample Total Volume Statistics Model (No Percentage)
     let statisticB = Statistics(title: "Total Volume", value: "$1.23Tr")
+    /// Sample Portfolio Value Statistics Model (Negative Percentage)
     let statisticC = Statistics(title: "Portfolio Value", value: "$50.4k", percentageChange: -12.34)
     
+    /// Sample coin
     let coin = Coin(
        id: "bitcoin",
        symbol: "btc",
@@ -220,6 +225,7 @@ class DeveloperPreview {
 }
 
 extension PreviewProvider {
+    /// Sample data used for previews
     static var sample: DeveloperPreview {
         return DeveloperPreview.instance
     }

@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    /// Removes HTML code in a String
     var removeHTMLOccurrences: String {
         return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }

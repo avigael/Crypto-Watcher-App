@@ -23,7 +23,6 @@ class CoinDataService {
             print("Invalid URL")
             return
         }
-        
         coinSubscription = NetworkingManager.download(url: url)
             .decode(type: [Coin].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// A collection of custom colors from Assets folder
 struct ColorTheme {
     let accent = Color("AccentColor")
     let background = Color("BackgroundColor")
@@ -17,5 +18,6 @@ struct ColorTheme {
 }
 
 extension Color {
+    /// A custom theme that automatically adapts to dark mode
     static let theme = ColorTheme()
 }

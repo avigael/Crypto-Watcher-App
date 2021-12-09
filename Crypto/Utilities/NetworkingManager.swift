@@ -8,12 +8,13 @@
 import Foundation
 import Combine
 
+/// Functions for easily managing data from a URL
 class NetworkingManager {
     
+    /// Custom Errors for NetworkingManager
     enum NetworkingError: LocalizedError {
         case badURLResponse(url: URL)
         case unknown
-        
         var errorDescription: String? {
             switch self {
             case .badURLResponse(let url):

@@ -13,6 +13,7 @@ import Foundation
     https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false
  */
 
+/// Represents additional information for a particular cryptocurrency returned from the CoinGecko API
 struct CoinInfo: Codable {
     let id, symbol, name: String?
     let blockTimeInMinutes: Int?
@@ -26,11 +27,13 @@ struct CoinInfo: Codable {
         case hashingAlgorithm = "hashing_algorithm"
     }
     
+    /// Gets description with HTML links removed
     var readableDescription: String? {
         return description?.en?.removeHTMLOccurrences
     }
 }
 
+/// Important links for this coin, specifically the main website and subreddit
 struct Links: Codable {
     let homepage: [String]?
     let subredditURL: String?
@@ -41,6 +44,7 @@ struct Links: Codable {
     }
 }
 
+/// Text description for this coin, specifically in English
 struct Description: Codable {
     let en: String?
 }

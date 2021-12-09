@@ -13,6 +13,7 @@ import Foundation
     https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h
  */
 
+/// Represents the information for a particular cryptocurrency returned from the CoinGecko API
 struct Coin: Identifiable, Codable {
     let id, symbol, name: String
     let image: String
@@ -59,19 +60,25 @@ struct Coin: Identifiable, Codable {
         case currentHoldings
     }
     
+    /// Updates the holdings for this coin
+    /// - Parameter amount: The new value the holdings will update to
+    /// - Returns: A coin with the updated holdings amount
     func updateHoldings(amount: Double) -> Coin {
         return Coin(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, currentHoldings: amount)
     }
     
+    /// Get the total value of the users current holdings of this coin
     var currentHoldingsValue: Double {
         return (currentHoldings ?? 0) * currentPrice
     }
     
+    /// Get this coins market cap rank as an Int
     var rank: Int {
         return Int(marketCapRank ?? 0)
     }
 }
 
+/// A Sparkline is 168 Doubles which represent the value of a coin over 168 hours (7 Days).
 struct SparklineIn7D: Codable {
     let price: [Double]?
 }

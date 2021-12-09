@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Statistics model used for StatisticsView
 struct Statistics: Identifiable {
     let id: String = UUID().uuidString
     let title: String
